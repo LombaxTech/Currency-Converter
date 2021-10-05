@@ -55,47 +55,55 @@ export default function Home() {
     };
 
     return (
-        <div>
+        <div className="currencyConverter">
             <h1 className="title"> Currency Converter</h1>
-            <div>
-                <input
-                    type="number"
-                    className="baseAmount"
-                    placeholder="Enter Base Amount..."
-                    value={baseAmount}
-                    onChange={handleBaseAmountChange}
-                />
-                {baseCurrency && <div>{baseCurrency.label}</div>}={" "}
-                <input
-                    type="number"
-                    className="convertedAmount"
-                    value={convertedAmount}
-                />
-                {secondCurrency && <div>{secondCurrency.label}</div>}
+            <div className="amountOptions">
+                <div className="amount">
+                    <input
+                        type="number"
+                        className="baseAmount"
+                        placeholder="Enter Base Amount..."
+                        value={baseAmount}
+                        onChange={handleBaseAmountChange}
+                    />
+                    {baseCurrency && <div>{baseCurrency.label}</div>}
+                </div>
+                ={" "}
+                <div className="amount">
+                    <input
+                        type="number"
+                        className="convertedAmount"
+                        value={convertedAmount}
+                    />
+                    {secondCurrency && <div>{secondCurrency.label}</div>}
+                </div>
             </div>
-            <div>
-                <label>Base Currency</label>
-                <Select
-                    onChange={handleBaseCurrencyChange}
-                    options={currencyRates}
-                />
-
-                <label>Second Currency</label>
-                <Select
-                    onChange={handleSecondCurrencyChange}
-                    options={currencyRates}
-                />
-                <button
-                    onClick={() =>
-                        console.log({ baseCurrency, secondCurrency })
-                    }
-                >
-                    First and Second Currency
-                </button>
-                <button onClick={() => console.log({ conversionFactor })}>
-                    Conversion Factor
-                </button>
+            <div className="currencyOptions">
+                <div className="baseCurrency">
+                    <label>Base Currency</label>
+                    <Select
+                        onChange={handleBaseCurrencyChange}
+                        options={currencyRates}
+                        className="currencySelect"
+                    />
+                </div>
+                <div className="secondCurrency">
+                    <label>Second Currency</label>
+                    <Select
+                        onChange={handleSecondCurrencyChange}
+                        options={currencyRates}
+                        className="currencySelect"
+                    />
+                </div>
             </div>
+            {/* <button
+                onClick={() => console.log({ baseCurrency, secondCurrency })}
+            >
+                First and Second Currency
+            </button>
+            <button onClick={() => console.log({ conversionFactor })}>
+                Conversion Factor
+            </button> */}
         </div>
     );
 }
