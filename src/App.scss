@@ -21,25 +21,30 @@ input::-webkit-inner-spin-button {
 }
 
 .amountOptions {
-    width: 60%;
+    width: 30%;
     margin: 20px 0;
     display: flex;
-    align-items: space-around;
-    justify-content: space-around;
+    // align-items: space-around;
+    // justify-content: space-around;
+    // display: none;
     // background: green;
 
     .amount {
         display: flex;
+        flex-direction: column;
+        // background: lightblue;
+        // padding: 10px;
+        align-items: center;
     }
 
     .baseAmount,
     .convertedAmount {
-        margin-right: 10px;
+        // margin-right: 10px;
         border: none;
-        width: 70%;
+        width: 55%;
         // height: 200px;
-        font-size: 1.1em;
-        // background: yellow;
+        font-size: 1.2em;
+        // background: lightblue;
 
         &:focus {
             outline: none;
@@ -49,7 +54,7 @@ input::-webkit-inner-spin-button {
 
 .currencyOptions {
     // background: yellow;
-    width: 80%;
+    width: 30%;
 
     display: flex;
     align-items: space-between;

@@ -36,14 +36,18 @@ export default function Home() {
     const handleBaseCurrencyChange = (baseCurrency) => {
         setBaseCurrency(baseCurrency);
         if (secondCurrency) {
-            setConversionFactor(secondCurrency.value / baseCurrency.value);
+            let newConversionFactor = secondCurrency.value / baseCurrency.value;
+            setConversionFactor(newConversionFactor);
+            setConvertedAmount(newConversionFactor * baseAmount);
         }
     };
 
     const handleSecondCurrencyChange = (secondCurrency) => {
         setSecondCurrency(secondCurrency);
         if (baseCurrency) {
-            setConversionFactor(secondCurrency.value / baseCurrency.value);
+            let newConversionFactor = secondCurrency.value / baseCurrency.value;
+            setConversionFactor(newConversionFactor);
+            setConvertedAmount(newConversionFactor * baseAmount);
         }
     };
 
@@ -62,13 +66,14 @@ export default function Home() {
                     <input
                         type="number"
                         className="baseAmount"
-                        placeholder="Enter Base Amount..."
+                        placeholder="..."
                         value={baseAmount}
+                        maxLength={2}
                         onChange={handleBaseAmountChange}
                     />
                     {baseCurrency && <div>{baseCurrency.label}</div>}
                 </div>
-                ={" "}
+                {/* ={" "} */}
                 <div className="amount">
                     <input
                         type="number"
