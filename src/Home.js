@@ -11,21 +11,25 @@ export default function Home() {
     const [currencyRates, setCurrencyRates] = useState([]);
 
     const init = async () => {
-        let result = await fetch(
-            "http://api.exchangeratesapi.io/v1/latest?access_key=7eb88623dbf9dce6d8c2b1772033fbf4"
-        );
-        result = await result.json();
-        console.log({ result });
-        let rates = result.rates;
+        try {
+            let result = await fetch(
+                "http://api.exchangeratesapi.io/v1/latest?access_key=7eb88623dbf9dce6d8c2b1772033fbf4"
+            );
+            result = await result.json();
+            console.log({ result });
+            let rates = result.rates;
 
-        for (const currency in rates) {
-            // console.log(currency);
-            // console.log(rates[currency]);
+            for (const currency in rates) {
+                // console.log(currency);
+                // console.log(rates[currency]);
 
-            setCurrencyRates((currencyRates) => [
-                ...currencyRates,
-                { value: rates[currency], label: currency },
-            ]);
+                setCurrencyRates((currencyRates) => [
+                    ...currencyRates,
+                    { value: rates[currency], label: currency },
+                ]);
+            }
+        } catch (error) {
+            console.log({ error });
         }
     };
 
