@@ -15,6 +15,7 @@ export default function Home() {
             "http://api.exchangeratesapi.io/v1/latest?access_key=7eb88623dbf9dce6d8c2b1772033fbf4"
         );
         result = await result.json();
+        console.log({ result });
         let rates = result.rates;
 
         for (const currency in rates) {
