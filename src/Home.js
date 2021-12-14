@@ -12,6 +12,9 @@ export default function Home() {
 
     const init = async () => {
         try {
+            console.log("next line should be...");
+            console.log(process.env.REACT_APP_TEST_KEY);
+
             let result = await fetch(
                 "http://api.exchangeratesapi.io/v1/latest?access_key=7eb88623dbf9dce6d8c2b1772033fbf4"
             );
