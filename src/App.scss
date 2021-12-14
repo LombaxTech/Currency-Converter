@@ -1,7 +1,15 @@
 body {
     padding: 0;
     margin: 0;
-    // background: yellow;
+    min-height: 100vh;
+    width: 100%;
+
+    background: green;
+    // display: flex;
+    // position: relative;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
 }
 
 input::-webkit-outer-spin-button,
@@ -10,14 +18,19 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.title {
+    // background: blue;
+}
 .currencyConverter {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    // position: relative;
 
-    // background: yellow;
-    min-height: 100vh;
+    background: yellow;
+    width: 50%;
+    // min-height: 100vh;
 }
 
 .amountOptions {
@@ -27,8 +40,8 @@ input::-webkit-inner-spin-button {
     // align-items: space-around;
     // justify-content: space-around;
     // display: none;
-    // background: green;
-
+    // background: blue;
+    //
     .amount {
         display: flex;
         flex-direction: column;
@@ -53,7 +66,7 @@ input::-webkit-inner-spin-button {
 }
 
 .currencyOptions {
-    // background: yellow;
+    // background: blue;
     width: 30%;
 
     display: flex;

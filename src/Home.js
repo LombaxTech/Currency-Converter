@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./App.scss";
 import Select from "react-select";
 
 export default function Home() {
@@ -52,6 +51,10 @@ export default function Home() {
     };
 
     const handleBaseAmountChange = (e) => {
+        // * if input is a number returns false
+        if (isNaN(e.target.value)) return;
+        // TODO: add warning for non number values
+
         setBaseAmount(e.target.value);
         if (conversionFactor) {
             setConvertedAmount(conversionFactor * e.target.value);
@@ -59,56 +62,57 @@ export default function Home() {
     };
 
     return (
-        <div className="currencyConverter">
-            <h1 className="title"> Currency Converter</h1>
-            <div className="amountOptions">
-                <div className="amount">
+        <div className="w-1/2 rounded-lg text-white bg-slate-500 shadow-slate-900 shadow-2xl m-auto  p-8 gap-8 flex flex-col items-center sm:w-full md:w-3/4 ">
+            <h1 className=" font-extrabold text-4xl text-center">
+                Currency Converter
+            </h1>
+            <div className="flex gap-4 text-black w-full justify-center md:flex-col">
+                <div className="amount bg-transparent">
                     <input
-                        type="number"
-                        className="baseAmount"
-                        placeholder="..."
+                        type="tel"
+                        className="baseAmount p-2 text-xl w-full "
+                        placeholder="Base Amount"
                         value={baseAmount}
-                        maxLength={2}
                         onChange={handleBaseAmountChange}
                     />
-                    {baseCurrency && <div>{baseCurrency.label}</div>}
+                    {baseCurrency && (
+                        <div className="text-white font-bold text-center mt-2">
+                            {baseCurrency.label}
+                        </div>
+                    )}
                 </div>
-                {/* ={" "} */}
                 <div className="amount">
                     <input
                         type="number"
-                        className="convertedAmount"
+                        className="baseAmount p-2 text-xl  w-full"
                         value={convertedAmount}
+                        placeholder="......"
                     />
-                    {secondCurrency && <div>{secondCurrency.label}</div>}
+                    {secondCurrency && (
+                        <div className="text-white font-bold text-center mt-2">
+                            {secondCurrency.label}
+                        </div>
+                    )}
                 </div>
             </div>
-            <div className="currencyOptions">
-                <div className="baseCurrency">
-                    <label>Base Currency</label>
+            <div className="currencyOptions flex gap-8">
+                <div className="baseCurrency flex flex-col gap-2">
+                    <label className="font-bold text-lg">Base Currency</label>
                     <Select
                         onChange={handleBaseCurrencyChange}
                         options={currencyRates}
-                        className="currencySelect"
+                        className="currencySelect text-black"
                     />
                 </div>
-                <div className="secondCurrency">
-                    <label>Second Currency</label>
+                <div className="secondCurrency flex flex-col gap-2">
+                    <label className="font-bold text-lg">Second Currency</label>
                     <Select
                         onChange={handleSecondCurrencyChange}
                         options={currencyRates}
-                        className="currencySelect"
+                        className="currencySelect text-black"
                     />
                 </div>
             </div>
-            {/* <button
-                onClick={() => console.log({ baseCurrency, secondCurrency })}
-            >
-                First and Second Currency
-            </button>
-            <button onClick={() => console.log({ conversionFactor })}>
-                Conversion Factor
-            </button> */}
         </div>
     );
 }
